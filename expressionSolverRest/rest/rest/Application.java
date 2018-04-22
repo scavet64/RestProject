@@ -6,6 +6,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+/**
+ * Initial format created by Dr. Baliga on 4/6/18.
+ *
+ * Modified by Vincent and Aaron
+ */
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 

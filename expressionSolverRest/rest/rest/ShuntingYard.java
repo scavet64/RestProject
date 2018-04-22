@@ -2,132 +2,16 @@ package rest;
 
 import java.util.*;
 
+/**
+ * Created by Vincent and Aaron
+ */
 public class ShuntingYard {
 
-//    private enum Operator
-//    {
-//        ADD(1), SUBTRACT(2), MULTIPLY(3), DIVIDE(4);
-//        final int precedence;
-//        Operator(int p) { precedence = p; }
-//    }
-//
-//    private static Map<String, Operator> ops = new HashMap<String, Operator>() {{
-//        put("+", Operator.ADD);
-//        put("-", Operator.SUBTRACT);
-//        put("*", Operator.MULTIPLY);
-//        put("/", Operator.DIVIDE);
-//    }};
-//
-//    private static boolean isHigerPrec(String op, String sub)
-//    {
-//        return (ops.containsKey(sub) && ops.get(sub).precedence >= ops.get(op).precedence);
-//    }
-//
-//    public static String postfix(String infix)
-//    {
-//        StringBuilder output = new StringBuilder();
-//        Deque<String> stack  = new LinkedList<>();
-//
-//        for (String token : infix.split("\\s")) {
-//            // operator
-//            if (ops.containsKey(token)) {
-//                while ( ! stack.isEmpty() && isHigerPrec(token, stack.peek()))
-//                    output.append(stack.pop()).append(' ');
-//                stack.push(token);
-//
-//                // left parenthesis
-//            } else if (token.equals("(")) {
-//                stack.push(token);
-//
-//                // right parenthesis
-//            } else if (token.equals(")")) {
-//                while ( ! stack.peek().equals("("))
-//                    output.append(stack.pop()).append(' ');
-//                stack.pop();
-//
-//                // digit
-//            } else {
-//                output.append(token).append(' ');
-//            }
-//        }
-//
-//        while ( ! stack.isEmpty())
-//            output.append(stack.pop()).append(' ');
-//
-//        return output.toString();
-//    }
-
-//    // A utility function to return precedence of a given operator
-//    // Higher returned value means higher precedence
-//    static int Prec(char ch)
-//    {
-//        switch (ch)
-//        {
-//            case '+':
-//            case '-':
-//                return 1;
-//
-//            case '*':
-//            case '/':
-//                return 2;
-//
-//            case '^':
-//                return 3;
-//        }
-//        return -1;
-//    }
-
-//    // The main method that converts given infix expression
-//    // to postfix expression.
-//    public static String infixToPostfix(String exp)
-//    {
-//        // initializing empty String for result
-//        String result = new String("");
-//
-//        // initializing empty stack
-//        Stack<Character> stack = new Stack<>();
-//
-//        for (int i = 0; i<exp.length(); ++i)
-//        {
-//            char c = exp.charAt(i);
-//
-//            // If the scanned character is an operand, add it to output.
-//            if (Character.isLetterOrDigit(c))
-//                result += c;
-//
-//                // If the scanned character is an '(', push it to the stack.
-//            else if (c == '(')
-//                stack.push(c);
-//
-//                //  If the scanned character is an ')', pop and output from the stack
-//                // until an '(' is encountered.
-//            else if (c == ')')
-//            {
-//                while (!stack.isEmpty() && stack.peek() != '(')
-//                    result += stack.pop();
-//
-//                if (!stack.isEmpty() && stack.peek() != '(')
-//                    return "Invalid Expression"; // invalid expression
-//                else
-//                    stack.pop();
-//            }
-//            else // an operator is encountered
-//            {
-//                while (!stack.isEmpty() && Prec(c) <= Prec(stack.peek()))
-//                    result += stack.pop() + " ";
-//                stack.push(c);
-//            }
-//
-//        }
-//
-//        // pop all the operators from the stack
-//        while (!stack.isEmpty())
-//            result += stack.pop() + " ";
-//
-//        return result;
-//    }
-
-    //checks whether c is operator
+    /**
+     * Checks whether or not the character is an operator
+     * @param c Character to test
+     * @return true if the character is an operator
+     */
     private static boolean isOperator(char c) {
         if (c == '+' || c == '-' || c == '*' || c == '/' ||
                 c == '^' || c == '(' || c == ')') {
@@ -136,7 +20,13 @@ public class ShuntingYard {
         else return false;
     }
 
-    //compares precedence of topmost operator in stack with operator at current position in infix-string
+    /**
+     * compares precedence of topmost operator in stack with operator at current position in infix-string
+     *
+     * @param operatorOldChar Old operator character
+     * @param operatorNewChar new operator character
+     * @return True if it is lower precedence
+     */
     private static boolean isLowerPrecedence(char operatorOldChar, char operatorNewChar) {
         boolean check = true; //true = new operator has higher precedence than old operator; false = contrary
         int operatorOld = 0, operatorNew = 0; //will compare precedence of operators; higher number = higher precedence
@@ -167,6 +57,12 @@ public class ShuntingYard {
         return check;
     }
 
+    /**
+     * Converts the infix expression into a postfix expression. Postfix expressions are in a format that a computer
+     * can solve easily
+     * @param infix The infix expression that should be converted
+     * @return Converted Postfix Expression
+     */
     public static String convertToPostfix(String infix) {
         Stack<Character> stack = new Stack<>();
         StringBuilder postfix = new StringBuilder();
