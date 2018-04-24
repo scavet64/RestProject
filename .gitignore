@@ -76,3 +76,6 @@ hs_err_pid*
 
 .bash_history
 .DS_Store
+calculatorRest/\.idea/workspace\.xml
+
+expressionSolverRest/\.idea/workspace\.xml

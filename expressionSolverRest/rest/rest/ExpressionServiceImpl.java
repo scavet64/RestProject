@@ -175,7 +175,7 @@ public class ExpressionServiceImpl implements ExpressionService {
         params.put("b", b);
 
         RestTemplate restTemplate = new RestTemplate();
-        Double result = restTemplate.getForObject(uri, Double.class);
+        Double result = restTemplate.getForObject(uri, Double.class, params);
 
         return result;
     }
@@ -195,7 +195,7 @@ public class ExpressionServiceImpl implements ExpressionService {
         params.put("b", b);
 
         RestTemplate restTemplate = new RestTemplate();
-        Double result = restTemplate.getForObject(uri, Double.class);
+        Double result = restTemplate.getForObject(uri, Double.class, params);
 
         return result;
     }
@@ -215,7 +215,7 @@ public class ExpressionServiceImpl implements ExpressionService {
         params.put("b", b);
 
         RestTemplate restTemplate = new RestTemplate();
-        Double result = restTemplate.getForObject(uri, Double.class);
+        Double result = restTemplate.getForObject(uri, Double.class, params);
 
         return result;
     }
