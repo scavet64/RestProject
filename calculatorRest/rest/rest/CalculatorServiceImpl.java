@@ -5,7 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
- * Created by Dr. Baliga on 4/6/18.
+ * Initial format created by Dr. Baliga on 4/6/18.
+ *
+ * Modified by Vincent and Aaron.
+ *
+ * Calculates values and stores them into a database that lives in memory
  */
 
 public class CalculatorServiceImpl implements CalculatorService{
@@ -38,6 +42,12 @@ public class CalculatorServiceImpl implements CalculatorService{
 
     //////// Interface Implementations /////////
 
+    /**
+     * Adds the two parameters. Uses a database to cache previous calculation
+     * @param a First Operand
+     * @param b Second Operand
+     * @return Calculated value
+     */
     @Override
     public double add (double a, double b) {
         Pair<Boolean,Double> cached = getCachedValue("add", a, b);
@@ -48,6 +58,12 @@ public class CalculatorServiceImpl implements CalculatorService{
 
     }
 
+    /**
+     * Subtracts the two parameters. Uses a database to cache previous calculation
+     * @param a First Operand
+     * @param b Second Operand
+     * @return Calculated value
+     */
     @Override
     public double sub(double a, double b) {
         Pair<Boolean,Double> cached = getCachedValue("sub", a, b);
@@ -57,6 +73,12 @@ public class CalculatorServiceImpl implements CalculatorService{
             return insert("sub", a, b, a-b);
     }
 
+    /**
+     * Multiply the two parameters. Uses a database to cache previous calculation
+     * @param a First Operand
+     * @param b Second Operand
+     * @return Calculated value
+     */
     @Override
     public double mult(double a, double b) {
         Pair<Boolean,Double> cached = getCachedValue("mult", a, b);
@@ -66,6 +88,12 @@ public class CalculatorServiceImpl implements CalculatorService{
             return insert("mult", a, b, a*b);
     }
 
+    /**
+     * Calculates the power of the two parameters. Uses a database to cache previous calculation
+     * @param base base Operand
+     * @param power power Operand
+     * @return Calculated value
+     */
     @Override
     public double power(double base, double power) {
         Pair<Boolean,Double> cached = getCachedValue("power", base, power);
@@ -76,10 +104,10 @@ public class CalculatorServiceImpl implements CalculatorService{
     }
 
     /**
-     * Currently works using integer division so its not gonna be very good.
-     * @param a
-     * @param b
-     * @return
+     * Divides the two parameters. Uses a database to cache previous calculation
+     * @param a First Operand
+     * @param b Second Operand
+     * @return Calculated value
      */
     @Override
     public double div(double a, double b) {

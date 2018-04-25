@@ -6,6 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+/**
+ * Main Application class that starts the Spring value
+ */
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
@@ -16,7 +19,7 @@ public class Application implements CommandLineRunner {
 
         SpringApplication.run(Application.class, args);
     }
-
+    
     @Override
     public void run(String... strings) throws Exception {
 
