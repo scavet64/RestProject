@@ -19,7 +19,7 @@ public class Application implements CommandLineRunner {
 
         SpringApplication.run(Application.class, args);
     }
-    
+
     @Override
     public void run(String... strings) throws Exception {
 

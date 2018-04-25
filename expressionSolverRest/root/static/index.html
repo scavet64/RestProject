@@ -73,7 +73,7 @@
         var outputText = document.getElementById("equasion_output");
 
         //the request
-        var requestURL = "localhost:3333/solve";
+        var requestURL = "/solve";
 
         var getRequest = new XMLHttpRequest();
         getRequest.onreadystatechange = function(){
@@ -83,7 +83,7 @@
         };
 
         function equasionInputChange(){
-            getRequest.open( "GET", requestURL, true );
+            getRequest.open( "POST", requestURL, true );
             getRequest.send(inputText.value);
         }
     </script>

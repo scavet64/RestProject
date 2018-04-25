@@ -24,5 +24,4 @@ public class ExpressionSolverController {
             @RequestBody() String expression) {
         return Double.toString(expressionService.solve(expression));
     }
-
 }
